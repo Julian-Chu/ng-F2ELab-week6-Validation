@@ -7,6 +7,7 @@ import { PageCreateAccountComponent } from "./page-create-account/page-create-ac
 import { PageGeneralInformationComponent } from "./page-general-information/page-general-information.component";
 import { PageUpdateProfilePictureComponent } from "./page-update-profile-picture/page-update-profile-picture.component";
 import { PagePaymentComponent } from "./page-payment/page-payment.component";
+import { PageCongratulationComponent } from "./page-congratulation/page-congratulation.component";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PagePaymentComponent } from "./page-payment/page-payment.component";
     PageCreateAccountComponent,
     PageGeneralInformationComponent,
     PageUpdateProfilePictureComponent,
-    PagePaymentComponent
+    PagePaymentComponent,
+    PageCongratulationComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
