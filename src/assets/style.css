@@ -1,23 +1,33 @@
 .Title {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: lighter;
   font-size: 48px;
 }
 
 .Subtitle {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: lighter;
   font-size: 24px;
 }
 
 .Form {
-  font-family: "Roboto";
-  font-weight: normal;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
   font-size: 20px;
 }
 
+.message-redirect {
+  font-family: "Roboto", sans-serif;
+  color: #0275D8;
+  font-size: 20px;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
 .Lable {
-  font-display: "Roboto";
+  font-display: "Roboto", sans-serif;
   font-weight: normal;
   font-size: 14px;
 }
@@ -45,6 +55,7 @@
 }
 
 .one-col {
+  position: relative;
   width: 100%;
 }
 
@@ -67,9 +78,13 @@
   height: 52px;
   line-height: 52px;
   padding-left: 20px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-size: 20px;
-  font-weight: normal;
+  font-weight: bold;
+}
+
+.input-field>input[type="password"] {
+  font-size: 46px;
 }
 
 .one-col>input {
@@ -156,7 +171,7 @@ label.img-upload {
   width: 460px;
   height: 140px;
   line-height: 140px;
-  border: 1px solid #000000;
+  border: 2px solid #000000;
   border-radius: 8px;
   display: flex;
 }
@@ -207,4 +222,128 @@ label.img-upload {
   float: left;
   height: 24px;
   width: 240px;
+  font-size: 18px;
+}
+
+.img-upload-content div:last-child {
+  font-size: 12px;
+}
+
+.congratulation-smile {
+  font-size: 230px;
+  margin: 0 auto;
+  text-align: center;
+  color: #BEE1FF
+}
+
+.warning,
+.warning input {
+  border-color: #F5A623;
+  position: relative;
+}
+
+.warning::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f071";
+  font-weight: 900;
+  font-size: 20px;
+  color: #F5A623;
+  position: absolute;
+  top: 55%;
+  right: 3%;
+  z-index: 1;
+}
+
+.warning>div {
+  height: 26px;
+  /* line-height: 26px; */
+  position: absolute;
+  background-color: #F5A623;
+  color: #FFFFFF;
+  font-size: 14px;
+  /* border: 2px solid #F5A623; */
+  border-radius: 4px;
+  padding: 6px 8px;
+  right: -120px;
+  top: 50%;
+}
+
+.warning>div::before {
+  content: "\f0d9";
+  font-family: "Font Awesome 5 Free";
+  position: absolute;
+  font-size: 16px;
+  left: -6px;
+  color: #F5A623;
+}
+
+.active>input {
+  border-color: #0275D8;
+}
+
+.active>label {
+  border-color: #0275D8
+}
+
+.active div {
+  color: #0275D8;
+  opacity: 1;
+}
+
+.upload-warning {
+  background-color: #F5A623;
+  height: 52px;
+  line-height: 52px;
+  /* width: 240px; */
+  text-align: center;
+  border-radius: 8px;
+  color: #FFFFFF;
+  margin-top: 24px;
+  display: none;
+}
+
+.upload-warning.active {
+  display: block;
+}
+
+.photos div {
+  display: inline-block;
+  width: 140px;
+  height: 140px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.photos div button {
+  display: block;
+  width: 100%;
+  background-color: #0275D8;
+  border-radius: 8px;
+  height: 0px;
+  position: absolute;
+  bottom: 0%;
+  transition: height 0.5s, opacity 0.5s;
+  opacity: 0;
+}
+
+.photos div button::after {
+  font-family: 'Font Awesome 5 Free';
+  content: "\f2ed";
+  font-weight: 900;
+}
+
+.photos div:hover button {
+  display: block;
+  height: 60px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.photos img {
+  max-width: 140px;
+  max-height: 140px;
+  width: auto;
+  height: auto;
+  margin: auto;
+  display: block;
 }
