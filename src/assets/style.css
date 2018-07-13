@@ -1,192 +1,192 @@
 .Title {
-    font-family: "Roboto";
-    font-weight: lighter;
-    font-size: 48px;
+  font-family: "Roboto";
+  font-weight: lighter;
+  font-size: 48px;
 }
 
 .Subtitle {
-    font-family: "Roboto";
-    font-weight: lighter;
-    font-size: 24px;
+  font-family: "Roboto";
+  font-weight: lighter;
+  font-size: 24px;
 }
 
 .Form {
-    font-family: "Roboto";
-    font-weight: normal;
-    font-size: 20px;
+  font-family: "Roboto";
+  font-weight: normal;
+  font-size: 20px;
 }
 
 .Lable {
-    font-display: "Roboto";
-    font-weight: normal;
-    font-size: 14px;
+  font-display: "Roboto";
+  font-weight: normal;
+  font-size: 14px;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .container {
-    width: 460px;
-    margin: 0 auto;
-    /* border: 2px solid black; */
-    border-top: 3px solid #0275D8;
-    min-height: 768px;
+  width: 460px;
+  margin: 0 auto;
+  /* border: 2px solid black; */
+  border-top: 3px solid #0275D8;
+  min-height: 768px;
 }
 
 .page-title {
-    text-align: center;
+  text-align: center;
 }
 
 .input-field {
-    display: block;
-    margin-top: 24px;
-    justify-content: space-between;
+  display: block;
+  margin-top: 24px;
+  justify-content: space-between;
 }
 
 .one-col {
-    width: 100%;
+  width: 100%;
 }
 
 .one-half-col {
-    width: 50%;
+  width: 50%;
 }
 
 .one-third-col {
-    width: 33%;
+  width: 33%;
 }
 
 .input-field * {
-    display: block;
+  display: block;
 }
 
 .input-field>input {
-    border: 2px solid #000000;
-    border-radius: 8px;
-    width: 100%;
-    height: 52px;
-    line-height: 52px;
-    padding-left: 20px;
-    font-family: "Roboto";
-    font-size: 20px;
-    font-weight: normal;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  width: 100%;
+  height: 52px;
+  line-height: 52px;
+  padding-left: 20px;
+  font-family: "Roboto";
+  font-size: 20px;
+  font-weight: normal;
 }
 
 .one-col>input {
-    width: 460px;
+  width: 460px;
 }
 
 .one-half-col>input {
-    width: 220px;
+  width: 220px;
 }
 
 .one-third-col>input {
-    width: 140px;
+  width: 140px;
 }
 
 .input-field>label {
-    height: 30px;
-    line-height: 30px;
+  height: 30px;
+  line-height: 30px;
 }
 
 button {
-    display: inline-block;
-    width: 100%;
-    max-width: 460px;
-    height: 52px;
-    font-family: "Roboto";
-    font-size: 20px;
-    font-weight: normal;
-    color: #FFFFFF;
-    background-color: rgba(190, 225, 255, 1);
-    border-color: rgba(190, 225, 255, 1);
-    border-radius: 8px;
-    margin: 40px auto 0 auto;
+  display: inline-block;
+  width: 100%;
+  max-width: 460px;
+  height: 52px;
+  font-family: "Roboto";
+  font-size: 20px;
+  font-weight: normal;
+  color: #FFFFFF;
+  background-color: rgba(190, 225, 255, 1);
+  border-color: rgba(190, 225, 255, 1);
+  border-radius: 8px;
+  margin: 40px auto 0 auto;
 }
 
 button.success {
-    background-color: rgba(2, 117, 216, 1);
-    border-color: rgba(74, 144, 226, 1);
+  background-color: rgba(2, 117, 216, 1);
+  border-color: rgba(74, 144, 226, 1);
 }
 
 .progress-bar {
-    text-align: center;
-    height: 111px;
-    line-height: 111px;
+  text-align: center;
+  height: 111px;
+  line-height: 111px;
 }
 
 .progress-bar>span {
-    display: inline-block;
-    vertical-align: middle;
-    background-color: #ffffff;
-    color: #BEE1FF;
-    font-weight: 900px;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #ffffff;
+  color: #BEE1FF;
+  font-weight: 900px;
 }
 
 .progress-bar>span.active {
-    color: #0275D8;
-    font-weight: 900px;
+  color: #0275D8;
+  font-weight: 900px;
 }
 
 .progress-bar>.middle-line {
-    width: 70px;
-    border-bottom: 2px solid #BEE1FF;
-    /* transform: translateX(-20px); */
-    margin-left: -5px;
-    margin-right: -5px;
-    z-index: -1;
+  width: 70px;
+  border-bottom: 2px solid #BEE1FF;
+  /* transform: translateX(-20px); */
+  /* margin-left: -5px; */
+  /* margin-right: -5px; */
+  z-index: -1;
 }
 
 .progress-bar>.middle-line.active {
-    border-bottom: 2px solid #0275D8;
+  border-bottom: 2px solid #0275D8;
 }
 
 .content {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .nomargin {
-    margin: 0;
+  margin: 0;
 }
 
 label.img-upload {
-    width: 460px;
-    height: 140px;
-    line-height: 140px;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    display: flex;
+  width: 460px;
+  height: 140px;
+  line-height: 140px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  display: flex;
 }
 
 .img-upload input {
-    display: none;
+  display: none;
 }
 
 .img-upload i {
-    font-size: 52px;
-    display: inline-block;
-    /* margin-left: 69px; */
-    height: 100%;
-    /* line-height: 140px; */
-    float: left;
-    margin-right: 10px;
+  font-size: 52px;
+  display: inline-block;
+  /* margin-left: 69px; */
+  height: 100%;
+  /* line-height: 140px; */
+  float: left;
+  margin-right: 10px;
 }
 
 .img-upload * {
-    display: inline-block;
+  display: inline-block;
 }
 
 .img-upload b {
-    width: 235px;
-    height: 48px;
-    display: inline;
+  width: 235px;
+  height: 48px;
+  display: inline;
 }
 
 .img-upload span {
-    display: inline;
+  display: inline;
 }
 
 /* .img-upload>div {
@@ -196,15 +196,15 @@ label.img-upload {
 } */
 
 .img-upload-content {
-    width: 320px;
-    height: 48px;
-    margin: auto;
-    opacity: 0.5;
+  width: 320px;
+  height: 48px;
+  margin: auto;
+  opacity: 0.5;
 }
 
 .img-upload-content div {
-    line-height: 24px;
-    float: left;
-    height: 24px;
-    width: 240px;
+  line-height: 24px;
+  float: left;
+  height: 24px;
+  width: 240px;
 }
