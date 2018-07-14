@@ -17,20 +17,22 @@
     </div>
   </div>
   <div class="content Form">
-    <div class="input-field one-col">
-      <label for="account">Account</label>
-      <input name="account" type="email" placeholder="example@email.com">
-    </div>
-    <div class="input-field one-col">
-      <label for="password">Password</label>
-      <input type="password" name="password">
-    </div>
-    <div class="input-field one-col">
-      <label for="repassword">Confirm Password</label>
-      <input type="password" name="repassword">
-    </div>
+    <form [formGroup]="form" (submit)="goToNextPage()">
+      <div class="input-field one-col">
+        <label for="account">Account</label>
+        <input name="account" type="email" placeholder="example@email.com" formControlName="account">
+      </div>
+      <div class="input-field one-col">
+        <label for="password">Password</label>
+        <input type="password" name="password" formControlName="password">
+      </div>
+      <div class="input-field one-col">
+        <label for="repassword">Confirm Password</label>
+        <input type="password" name="repassword" formControlName="repassword">
+      </div>
+      <button class="one-col">SUBMIT & NEXT</button>
+    </form>
 
   </div>
-  <button>SUBMIT & NEXT</button>
 
 </div>

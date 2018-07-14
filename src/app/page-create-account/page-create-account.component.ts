@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-page-create-account",
@@ -6,7 +7,20 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./page-create-account.component.css"]
 })
 export class PageCreateAccountComponent implements OnInit {
-  constructor() {}
+  form: FormGroup;
+  @Output() toNextPage = new EventEmitter();
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.form = this.fb.group({
+      account: ["11", [Validators.required]],
+      password: null,
+      repassword: null
+    });
+  }
+
+  goToNextPage() {
+    console.log(this.form.value);
+    this.toNextPage.emit(this.form.value);
+  }
 }

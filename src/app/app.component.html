@@ -1,7 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-page-create-account></app-page-create-account>
-<app-page-general-information></app-page-general-information>
-<app-page-update-profile-picture></app-page-update-profile-picture>
+<ng-container [ngSwitch]="page">
+  <app-page-create-account *ngSwitchCase="1" (toNextPage)="onNextPage($event)"></app-page-create-account>
+  <app-page-general-information *ngSwitchCase="2" (toNextPage)="onNextPage($event)"></app-page-general-information>
+  <app-page-update-profile-picture *ngSwitchCase="3" (toNextPage)="onNextPage($event)"></app-page-update-profile-picture>
 
-<app-page-payment></app-page-payment>
-<app-page-congratulation></app-page-congratulation>
+  <app-page-payment *ngSwitchCase="4" (toNextPage)="onNextPage($event)"></app-page-payment>
+  <app-page-congratulation *ngSwitchCase="5" (toNextPage)="onNextPage($event)"></app-page-congratulation>
+</ng-container>

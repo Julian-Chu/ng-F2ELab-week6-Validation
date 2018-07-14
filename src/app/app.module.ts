@@ -1,6 +1,7 @@
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { PageCreateAccountComponent } from "./page-create-account/page-create-account.component";
@@ -18,7 +19,7 @@ import { PageCongratulationComponent } from "./page-congratulation/page-congratu
     PagePaymentComponent,
     PageCongratulationComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
