@@ -16,43 +16,58 @@
       Tell us who you are!
     </div>
   </div>
-  <div class="content">
-    <div class="input-field one-half-col">
-      <label for="name" class="Form">Name(optional)</label>
-      <input name="name" type="text" placeholder="Example Name">
-    </div>
-    <div class="input-field one-half-col">
-      <label for="Phone" class="Form">Phone*</label>
-      <input name="phone" type="text" placeholder="0912 345 678">
-    </div>
+  <form [formGroup]="form" (submit)="goToNextPage()">
+    <div class="content">
+
+      <div class="input-field one-half-col">
+        <label for="name" class="Form">Name(optional)</label>
+        <input name="name" type="text" placeholder="Example Name">
+      </div>
+      <div class="input-field one-half-col-last" [ngClass]="{warning: phone.touched && phone.errors}">
+        <label for="Phone" class="Form">Phone*</label>
+        <input name="phone" type="text" placeholder="0912 345 678" formControlName="phone">
+        <ng-container *ngIf="phone.touched && phone.errors">
+          <div class="errMsg" *ngIf="phone.errors['required']">Required</div>
+        </ng-container>
+      </div>
 
 
-    <div class="input-field one-third-col">
-      <label for="" class="Form" style="white-space: nowrap;">Birth Date(optional)</label>
-      <input type="number" name="year" min="1900" max="2018" placeholder="YYYYY">
-    </div>
-    <div class="input-field one-third-col">
-      <label for="" class="Form"></label>
-      <input type="number" name="month" min="1" max="12" placeholder="MM">
-    </div>
-    <div class="input-field one-third-col">
-      <label for="" class="Form"></label>
-      <input type="number" name="day" min="1" max="31" placeholder="DD">
-    </div>
+      <div class="input-field one-third-col">
+        <label for="" class="Form" style="white-space: nowrap;">Birth Date(optional)</label>
+        <input type="number" name="year" min="1900" max="2018" placeholder="YYYYY">
+      </div>
+      <div class="input-field one-third-col">
+        <label for="" class="Form"></label>
+        <input type="number" name="month" min="1" max="12" placeholder="MM">
+      </div>
+      <div class="input-field one-third-col">
+        <label for="" class="Form"></label>
+        <input type="number" name="day" min="1" max="31" placeholder="DD">
+      </div>
 
-    <div class="input-field one-half-col">
-      <label for="" class="Form">Address*</label>
-      <input type="text" placeholder="City">
+      <div class="input-field one-half-col" [ngClass]="{warning: city.touched && city.errors}">
+        <label for="" class="Form">Address*</label>
+        <input type="text" placeholder="City" formControlName="city">
+        <ng-container *ngIf="city.touched && city.errors">
+          <div class="errMsg" *ngIf="city.errors['required']">Required</div>
+        </ng-container>
+      </div>
+      <div class="input-field one-half-col-last" [ngClass]="{warning: dist.touched && dist.errors}">
+        <label for=""></label>
+        <input type="text" placeholder="Dist" formControlName="dist">
+        <ng-container *ngIf="dist.touched && dist.errors">
+          <div class="errMsg" *ngIf="dist.errors['required']">Required</div>
+        </ng-container>
+      </div>
+      <div class="input-field one-col nomargin" [ngClass]="{warning: addressDetail.touched && addressDetail.errors}">
+        <label for=""></label>
+        <input type="text" placeholder="Address Detail" formControlName="addressDetail">
+        <ng-container *ngIf="addressDetail.touched && addressDetail.errors">
+          <div class="errMsg" *ngIf="addressDetail.errors['required']">Required</div>
+        </ng-container>
+      </div>
+      <button class="one-col" [ngClass]="{active: form.touched && form.valid}" [disabled]="form.untouched||form.invalid">SUBMIT & NEXT</button>
     </div>
-    <div class="input-field one-half-col">
-      <label for=""></label>
-      <input type="text" placeholder="Dist">
-    </div>
-    <div class="input-field one-col nomargin">
-      <label for=""></label>
-      <input type="text" placeholder="Address Detail">
-    </div>
-  </div>
-  <button>SUBMIT & NEXT</button>
+  </form>
 
 </div>
