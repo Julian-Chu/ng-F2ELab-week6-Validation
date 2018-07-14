@@ -8,7 +8,7 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   title = "app";
-  page = 3;
+  page = 4;
   user = new User();
   onNextPage(data: Array<any>) {
     this.page++;

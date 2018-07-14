@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 
 @Component({
   selector: "app-page-payment",
@@ -6,7 +7,26 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./page-payment.component.css"]
 })
 export class PagePaymentComponent implements OnInit {
-  constructor() {}
+  @Output() toNextPage = new EventEmitter();
+  form: FormGroup;
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.form = this.fb.group({
+      cardNumber: ["", [Validators.required]],
+      cardholderName: ["", [Validators.required]],
+      cardType: "",
+      bank: ["", [Validators.required]],
+      cvv: [
+        "",
+        [Validators.required, Validators.maxLength(3), Validators.minLength(3)]
+      ],
+      expireMonth: ["", [Validators.required]],
+      expireYear: ["", [Validators.required]]
+    });
+  }
+
+  goToNextPage() {
+    this.toNextPage.emit(this.form.value);
+  }
 }
