@@ -1,3 +1,4 @@
+import { CustomValidators } from "./../custom-validators";
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import {
   FormGroup,
@@ -14,7 +15,7 @@ import {
 })
 export class PageCreateAccountComponent implements OnInit {
   form: FormGroup;
-  account: AbstractControl;
+  account: FormControl;
   password: AbstractControl;
   repassword: AbstractControl;
   @Output() toNextPage = new EventEmitter();
@@ -22,12 +23,12 @@ export class PageCreateAccountComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      account: ["", [Validators.required]],
+      account: ["", [Validators.required, CustomValidators.validateEmail]],
       password: [null, [Validators.required]],
       repassword: [null, [Validators.required]]
     });
 
-    this.account = this.form.get("account");
+    this.account = this.form.get("account") as FormControl;
     this.password = this.form.get("password");
     this.repassword = this.form.get("repassword");
   }
