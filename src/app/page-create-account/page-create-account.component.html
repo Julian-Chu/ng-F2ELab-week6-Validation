@@ -18,19 +18,31 @@
   </div>
   <div class="content Form">
     <form [formGroup]="form" (submit)="goToNextPage()">
-      <div class="input-field one-col">
+      <div class="input-field one-col" [ngClass]="{warning: account.touched && account.errors}">
         <label for="account">Account</label>
         <input name="account" type="email" placeholder="example@email.com" formControlName="account">
+        <div class="errMsg" *ngIf="account.errors?.required">Required</div>
+        <!-- <div class="errMsg" *ngIf="account.errors?.minlength">Length</div> -->
       </div>
-      <div class="input-field one-col">
+      <div class="input-field one-col" [ngClass]="{warning: password.touched && password.errors}">
         <label for="password">Password</label>
         <input type="password" name="password" formControlName="password">
+        <div class="errMsg" *ngIf="password.errors?.required">Required</div>
       </div>
-      <div class="input-field one-col">
+      <div class="input-field one-col" [ngClass]="{warning: repassword.touched && repassword.errors}">
         <label for="repassword">Confirm Password</label>
         <input type="password" name="repassword" formControlName="repassword">
+        <div class="errMsg" *ngIf="repassword.errors?.required">Required</div>
+
       </div>
-      <button class="one-col">SUBMIT & NEXT</button>
+      <button class="one-col" [ngClass]="{active: form.touched && form.valid}" [disabled]="form.untouched||form.invalid">SUBMIT & NEXT</button>
+      <div>form.untouched: {{form.untouched}}</div>
+      <div>form.errors: {{form.errors| json}}</div>
+      <div>form.value: {{form.value| json}}</div>
+      <div>form.invalid: {{form.invalid| json}}</div>
+      <div>form.dirty: {{form.dirty| json}}</div>
+      <div>form.pristine: {{form.pristine| json}}</div>
+      <div>form.get("account").errors: {{form.get("account").errors | json}}</div>
     </form>
 
   </div>
