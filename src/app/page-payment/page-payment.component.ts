@@ -1,5 +1,6 @@
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Component, OnInit, EventEmitter, Output } from "@angular/core";
+import { CustomValidators } from "../custom-validators";
 
 @Component({
   selector: "app-page-payment",
@@ -12,18 +13,30 @@ export class PagePaymentComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.form = this.fb.group({
-      cardNumber: ["", [Validators.required]],
-      cardholderName: ["", [Validators.required]],
-      cardType: "",
-      bank: ["", [Validators.required]],
-      cvv: [
-        "",
-        [Validators.required, Validators.maxLength(3), Validators.minLength(3)]
-      ],
-      expireMonth: ["", [Validators.required]],
-      expireYear: ["", [Validators.required]]
-    });
+    this.form = this.fb.group(
+      {
+        cardNumber: ["", [Validators.required]],
+        cardholderName: ["", [Validators.required]],
+        cardType: "",
+        bank: ["", [Validators.required]],
+        cvv: [
+          "",
+          [
+            Validators.required,
+            Validators.maxLength(3),
+            Validators.minLength(3)
+          ]
+        ],
+        expireMonth: ["", [Validators.required]],
+        expireYear: ["", [Validators.required]]
+      },
+      {
+        validator: CustomValidators.checkCreditCardType(
+          "cardNumber",
+          "cardType"
+        )
+      }
+    );
   }
 
   goToNextPage() {
