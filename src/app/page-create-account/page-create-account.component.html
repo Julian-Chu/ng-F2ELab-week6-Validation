@@ -21,36 +21,33 @@
       <div class="input-field one-col" [ngClass]="{warning: account.touched && account.errors}">
         <label for="account">Account</label>
         <input name="account" type="email" placeholder="example@email.com" formControlName="account">
-        <ng-container *ngIf="account.errors">
+        <ng-container *ngIf="account.touched && account.errors">
           <div class="errMsg" *ngIf="account.dirty && account.errors['invalidEmail']">Email is invalid</div>
           <div class="errMsg" *ngIf="account.pristine &&  account.errors['required']">Required</div>
         </ng-container>
 
       </div>
-      <div class="input-field one-col" [ngClass]="{warning: password.touched && password.errors}">
-        <label for="password">Password</label>
-        <input type="password" name="password" formControlName="password">
+      <div formGroupName="matchingPasswords">
 
-        <ng-container *ngIf="password.errors">
-          <div class="errMsg" *ngIf="password.dirty && password.errors['invalidPassword']">min 6, 1 a-z or A-Z, 1 number</div>
-          <div class="errMsg" *ngIf="password.pristine && password.errors['required']">Required</div>
+        <div class="input-field one-col" [ngClass]="{warning: password.touched && password.errors}">
+          <label for="password">Password</label>
+          <input type="password" name="password" formControlName="password">
 
-        </ng-container>
+          <ng-container *ngIf="password.touched && password.errors">
+            <div class="errMsg" *ngIf="password.dirty && password.errors['invalidPassword']">min 6 words, 1 a-z or A-Z, 1 number</div>
+            <div class="errMsg" *ngIf="password.pristine && password.errors['required']">Required</div>
+
+          </ng-container>
+        </div>
+        <div class="input-field one-col" [ngClass]="{warning: repassword.touched && repassword.errors}">
+          <label for="repassword">Confirm Password</label>
+          <input type="password" name="repassword" formControlName="repassword">
+          <div class="errMsg" *ngIf="repassword.errors && repassword.errors['required']">Required</div>
+          <div class="errMsg" *ngIf="repassword.errors && repassword.errors['mismatchPassword']">Password mismatch!</div>
+        </div>
       </div>
-      <div class="input-field one-col" [ngClass]="{warning: repassword.touched && repassword.errors}">
-        <label for="repassword">Confirm Password</label>
-        <input type="password" name="repassword" formControlName="repassword">
-        <div class="errMsg" *ngIf="repassword.errors && repassword.errors['required']">Required</div>
 
-      </div>
       <button class="one-col" [ngClass]="{active: form.touched && form.valid}" [disabled]="form.untouched||form.invalid">SUBMIT & NEXT</button>
-      <div>form.untouched: {{form.untouched}}</div>
-      <div>form.errors: {{form.errors| json}}</div>
-      <div>form.value: {{form.value| json}}</div>
-      <div>form.invalid: {{form.invalid| json}}</div>
-      <div>form.dirty: {{form.dirty| json}}</div>
-      <div>form.pristine: {{form.pristine| json}}</div>
-      <div>form.get("account").errors: {{form.get("account").errors | json}}</div>
     </form>
 
   </div>

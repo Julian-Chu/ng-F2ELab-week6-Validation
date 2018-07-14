@@ -1,4 +1,4 @@
-import { FormControl } from "../../node_modules/@angular/forms";
+import { FormControl, FormGroup } from "../../node_modules/@angular/forms";
 
 export class CustomValidators {
   static validateEmail(control: FormControl) {
@@ -20,5 +20,15 @@ export class CustomValidators {
       return null;
     }
     return { invalidPassword: true };
+  }
+
+  static matchPassword(passwordFieldName: string, repasswordFieldName: string) {
+    return (group: FormGroup) => {
+      const password = group.get(passwordFieldName);
+      const repassword = group.get(repasswordFieldName);
+      if (password.value !== repassword.value) {
+        return repassword.setErrors({ mismatchPassword: true });
+      }
+    };
   }
 }

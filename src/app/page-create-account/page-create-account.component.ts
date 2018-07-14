@@ -16,24 +16,32 @@ import {
 export class PageCreateAccountComponent implements OnInit {
   form: FormGroup;
   account: FormControl;
-  password: AbstractControl;
-  repassword: AbstractControl;
+  password: FormControl;
+  repassword: FormControl;
   @Output() toNextPage = new EventEmitter();
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.form = this.fb.group({
       account: ["", [Validators.required, CustomValidators.validateEmail]],
-      password: [
-        null,
-        [Validators.required, CustomValidators.validatePassword]
-      ],
-      repassword: [null, [Validators.required]]
+      matchingPasswords: this.fb.group(
+        {
+          password: [
+            null,
+            [Validators.required, CustomValidators.validatePassword]
+          ],
+          repassword: [null, [Validators.required]]
+        },
+        { validator: CustomValidators.matchPassword("password", "repassword") }
+      )
     });
 
     this.account = this.form.get("account") as FormControl;
-    this.password = this.form.get("password");
-    this.repassword = this.form.get("repassword");
+    const matchingPasswords = this.form.controls[
+      "matchingPasswords"
+    ] as FormGroup;
+    this.password = this.form.get("matchingPasswords.password") as FormControl;
+    this.repassword = matchingPasswords.get("repassword") as FormControl;
   }
 
   goToNextPage() {
