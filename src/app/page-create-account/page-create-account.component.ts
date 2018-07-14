@@ -24,7 +24,10 @@ export class PageCreateAccountComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       account: ["", [Validators.required, CustomValidators.validateEmail]],
-      password: [null, [Validators.required]],
+      password: [
+        null,
+        [Validators.required, CustomValidators.validatePassword]
+      ],
       repassword: [null, [Validators.required]]
     });
 
