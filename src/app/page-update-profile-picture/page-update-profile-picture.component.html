@@ -54,5 +54,5 @@
 
     </div>
 
-    <button class="one-col" [ngClass]="{active: images.length!==0}" [disabled]="images.length === 0">SUBMIT & NEXT</button>
+    <button class="one-col" [ngClass]="{active: images.length!==0}" [disabled]="images.length === 0" (click)="goToNextPage()">SUBMIT & NEXT</button>
   </div>

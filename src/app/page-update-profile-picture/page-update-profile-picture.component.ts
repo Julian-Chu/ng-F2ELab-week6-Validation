@@ -1,4 +1,10 @@
-import { Component, OnInit, ElementRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  Output,
+  EventEmitter
+} from "@angular/core";
 import { Observable } from "../../../node_modules/rxjs";
 
 @Component({
@@ -9,6 +15,7 @@ import { Observable } from "../../../node_modules/rxjs";
 export class PageUpdateProfilePictureComponent implements OnInit {
   dragging = false;
   images: Array<any> = [];
+  @Output() toNextPage = new EventEmitter();
   constructor() {}
 
   ngOnInit() {}
@@ -67,5 +74,8 @@ export class PageUpdateProfilePictureComponent implements OnInit {
 
   deleteImage(index) {
     this.images.splice(index, 1);
+  }
+  goToNextPage() {
+    this.toNextPage.emit({});
   }
 }
