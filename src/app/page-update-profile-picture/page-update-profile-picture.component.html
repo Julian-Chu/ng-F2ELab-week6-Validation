@@ -17,8 +17,8 @@
     </div>
   </div>
   <div class="content">
-    <div class="input-field one-col">
-      <label class="img-upload" for="">
+    <div class="input-field one-col" [ngClass]="{active: dragging}">
+      <label class="img-upload" (drop)="onDrop($event)" (dragenter)="onDragenter($event)" (dragover)="onDragover($event)" (dragleave)="onDragleave($event)">
         <input type="file">
 
         <div class="img-upload-content">
@@ -26,10 +26,33 @@
           <div>
             UPLOAD UP TO 3 PHOTOS
           </div>
-          <div>MAX</div>
+          <div>MAXIMUM SIZE: 150*150px</div>
+
         </div>
 
       </label>
     </div>
+    <div class="one-col upload-warning Form">
+      <i class="fas fa-exclamation-triangle"></i>
+      ONE FILE IS OVER THE MAXIMUM SIZE
+    </div>
+    <div id="photos" class="photos">
+      <!-- <div>
+        <img src="https://images.unsplash.com/photo-1513827379601-9dba5099a3f9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1acdd78f34ee75aade9e313251bb1695&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgbhttps://unsplash.com/photos/seTr2ZmQDcM">
+        <button></button>
+
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1514632542677-48fae74a01b2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cf412aceb1d689765e387d30fca7210a&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb" alt="">
+        <button></button>
+
+      </div> -->
+      <div *ngFor="let image of images; let i=index">
+        <img [src]="image" alt="">
+        <button (click)="deleteImage(i)"></button>
+      </div>
+
+    </div>
+
+    <button class="one-col" [ngClass]="{active: images.length!==0}" [disabled]="images.length === 0">SUBMIT & NEXT</button>
   </div>
-  <button>SUBMIT & NEXT</button>

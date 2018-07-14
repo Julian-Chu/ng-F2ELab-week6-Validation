@@ -337,6 +337,7 @@ label.img-upload {
   height: 140px;
   position: relative;
   border-radius: 8px;
+  margin-top: 10px;
 }
 
 .photos div button {
@@ -375,4 +376,8 @@ label.img-upload {
 
 .content>form {
   display: flex;
+}
+
+.photos+button {
+  margin-top: 10px;
 }
