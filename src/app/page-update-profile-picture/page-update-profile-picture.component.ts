@@ -15,12 +15,14 @@ import { Observable } from "../../../node_modules/rxjs";
 export class PageUpdateProfilePictureComponent implements OnInit {
   dragging = false;
   images: Array<any> = [];
+  oversizedFileExist = false;
   @Output() toNextPage = new EventEmitter();
   constructor() {}
 
   ngOnInit() {}
 
   onDrop(event: DragEvent) {
+    this.oversizedFileExist = false;
     event.preventDefault();
     const data = event.dataTransfer;
     const files = data.files;
@@ -42,6 +44,21 @@ export class PageUpdateProfilePictureComponent implements OnInit {
       alert(`${File.name} not image`);
     }
     const reader = new FileReader();
+    reader.onloadend = () => {
+      // image size
+      const img = new Image();
+      img.onload = () => {
+        console.log(img.width);
+        console.log(img.height);
+        if (img.width <= 150 && img.height <= 150) {
+          this.images.push(img.src);
+        } else {
+          this.oversizedFileExist = true;
+        }
+      };
+      const src = reader.result;
+      img.src = src;
+    };
     reader.readAsDataURL(file);
     // return Observable.create(observer => {
     //   reader.onloadend = () => {
@@ -49,11 +66,6 @@ export class PageUpdateProfilePictureComponent implements OnInit {
     //     observer.complete();
     //   };
     // });
-
-    reader.onloadend = () => {
-      const src = reader.result;
-      this.images.push(src);
-    };
   }
 
   onDragenter(event: DragEvent) {
