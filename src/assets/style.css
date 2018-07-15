@@ -381,3 +381,10 @@ label.img-upload {
 .photos+button {
   margin-top: 10px;
 }
+
+.card-type {
+  position: absolute;
+  top: 55%;
+  right: 10px;
+  z-index: 1;
+}

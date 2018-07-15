@@ -16,8 +16,8 @@
       Glad to see you here!
     </div>
   </div>
-  <div class="content Form">
-    <form [formGroup]="form" (submit)="goToNextPage()">
+  <form [formGroup]="form" (submit)="goToNextPage()">
+    <div class="content Form">
       <div class="input-field one-col" [ngClass]="{warning: account.touched && account.errors}">
         <label for="account">Account</label>
         <input name="account" type="email" placeholder="example@email.com" formControlName="account">
@@ -27,7 +27,7 @@
         </ng-container>
 
       </div>
-      <div formGroupName="matchingPasswords">
+      <ng-container formGroupName="matchingPasswords" class="one-col">
 
         <div class="input-field one-col" [ngClass]="{warning: password.touched && password.errors}">
           <label for="password">Password</label>
@@ -45,11 +45,11 @@
           <div class="errMsg" *ngIf="repassword.errors && repassword.errors['required']">Required</div>
           <div class="errMsg" *ngIf="repassword.errors && repassword.errors['mismatchPassword']">Password mismatch!</div>
         </div>
-      </div>
+      </ng-container>
 
       <button class="one-col" [ngClass]="{active: form.touched && form.valid}" [disabled]="form.untouched||form.invalid">SUBMIT & NEXT</button>
-    </form>
 
-  </div>
+    </div>
+  </form>
 
 </div>

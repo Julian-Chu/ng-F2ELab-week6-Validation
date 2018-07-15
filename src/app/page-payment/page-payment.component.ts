@@ -16,6 +16,8 @@ export class PagePaymentComponent implements OnInit {
   @Output() toNextPage = new EventEmitter();
   form: FormGroup;
   cardNumber: FormControl;
+  cardholderName: FormControl;
+  bank: FormControl;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
@@ -25,16 +27,9 @@ export class PagePaymentComponent implements OnInit {
         cardholderName: ["", [Validators.required]],
         cardType: "",
         bank: ["", [Validators.required]],
-        cvv: [
-          "",
-          [
-            Validators.required,
-            Validators.maxLength(3),
-            Validators.minLength(3)
-          ]
-        ],
-        expireMonth: ["", [Validators.required]],
-        expireYear: ["", [Validators.required]]
+        cvv: "",
+        expireMonth: "",
+        expireYear: ""
       },
       {
         validator: CustomValidators.checkCreditCardType(
@@ -45,6 +40,8 @@ export class PagePaymentComponent implements OnInit {
     );
 
     this.cardNumber = this.form.get("cardNumber") as FormControl;
+    this.cardholderName = this.form.get("cardholderName") as FormControl;
+    this.bank = this.form.get("bank") as FormControl;
   }
 
   goToNextPage() {
@@ -53,5 +50,6 @@ export class PagePaymentComponent implements OnInit {
 
   printMsg() {
     console.log(this.cardNumber.errors);
+    console.log(this.form.errors);
   }
 }

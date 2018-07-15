@@ -45,23 +45,29 @@ export class CustomValidators {
       const mastercardReg = new RegExp("^5[1-5][0-9]{14}$");
       const visacardReg = new RegExp("^4[0-9]{12}(?:[0-9]{3})?$");
       const jcbcardReg = new RegExp("^(?:2131|1800|35\\d{3})\\d{11}$");
+      // cardTypeControl.patchValue(null, {
+      //   emitEvent: true,
+      //   onlySelf: true
+      // });
 
-      if (cardNumber.value === "" || cardNumber.value === null) {
-        return cardNumber.setErrors({ required: true });
-      } else if (visacardReg.test(cardNumber.value)) {
-        return cardTypeControl.patchValue(
-          {
-            cardType: "Visa"
-          },
-          {
-            emitEvent: false,
-            onlySelf: true
-          }
-        );
+      // if (cardNumber.value === "" || cardNumber.value === null) {
+      //   return cardNumber.setErrors({ required: true });
+      // } else
+      if (visacardReg.test(cardNumber.value)) {
+        return cardTypeControl.patchValue("Visa", {
+          emitEvent: true,
+          onlySelf: true
+        });
       } else if (jcbcardReg.test(cardNumber.value)) {
-        return cardTypeControl.patchValue("JCB");
+        return cardTypeControl.patchValue("JCB", {
+          emitEvent: true,
+          onlySelf: true
+        });
       } else if (mastercardReg.test(cardNumber.value)) {
-        return cardTypeControl.patchValue("Master");
+        return cardTypeControl.patchValue("Master", {
+          emitEvent: true,
+          onlySelf: true
+        });
       }
 
       return cardNumber.setErrors({ invalidCreditCard: true });

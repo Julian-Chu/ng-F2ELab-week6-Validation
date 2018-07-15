@@ -48,8 +48,6 @@ export class PageUpdateProfilePictureComponent implements OnInit {
       // image size
       const img = new Image();
       img.onload = () => {
-        console.log(img.width);
-        console.log(img.height);
         if (img.width <= 150 && img.height <= 150) {
           this.images.push(img.src);
         } else {
@@ -88,6 +86,13 @@ export class PageUpdateProfilePictureComponent implements OnInit {
     this.images.splice(index, 1);
   }
   goToNextPage() {
-    this.toNextPage.emit({});
+    const imgs = {};
+
+    // this.images.map((image, index) => {
+    //   imgs[`image_${index}`] = image;
+    // });
+
+    imgs["images"] = this.images;
+    this.toNextPage.emit(imgs);
   }
 }

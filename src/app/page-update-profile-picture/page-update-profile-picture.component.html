@@ -10,7 +10,7 @@
   </div>
   <div class="page-title">
     <div class="main-title Title">
-      Update Profile Picture
+      Update Profile Picture(optional)
     </div>
     <div class="subtitle Subtitle">
       We wanna know you more
@@ -54,5 +54,6 @@
 
     </div>
 
-    <button class="one-col" [ngClass]="{active: images.length!==0}" [disabled]="images.length === 0" (click)="goToNextPage()">SUBMIT & NEXT</button>
+    <!-- <button class="one-col" [ngClass]="{active: images.length!==0}" [disabled]="images.length === 0" (click)="goToNextPage()">SUBMIT & NEXT</button> -->
+    <button class="one-col active" (click)="goToNextPage()">SUBMIT & NEXT</button>
   </div>
