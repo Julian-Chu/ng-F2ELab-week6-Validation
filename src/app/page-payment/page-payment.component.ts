@@ -48,8 +48,7 @@ export class PagePaymentComponent implements OnInit {
     this.toNextPage.emit(this.form.value);
   }
 
-  printMsg() {
+  printMsg(event) {
     console.log(this.cardNumber.errors);
-    console.log(this.form.errors);
   }
 }
