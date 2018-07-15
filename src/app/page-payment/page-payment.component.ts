@@ -1,4 +1,9 @@
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl
+} from "@angular/forms";
 import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 import { CustomValidators } from "../custom-validators";
 
@@ -10,12 +15,13 @@ import { CustomValidators } from "../custom-validators";
 export class PagePaymentComponent implements OnInit {
   @Output() toNextPage = new EventEmitter();
   form: FormGroup;
+  cardNumber: FormControl;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.form = this.fb.group(
       {
-        cardNumber: ["", [Validators.required]],
+        cardNumber: [null, [Validators.required]],
         cardholderName: ["", [Validators.required]],
         cardType: "",
         bank: ["", [Validators.required]],
@@ -37,9 +43,15 @@ export class PagePaymentComponent implements OnInit {
         )
       }
     );
+
+    this.cardNumber = this.form.get("cardNumber") as FormControl;
   }
 
   goToNextPage() {
     this.toNextPage.emit(this.form.value);
+  }
+
+  printMsg() {
+    console.log(this.cardNumber.errors);
   }
 }

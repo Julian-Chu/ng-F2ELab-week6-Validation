@@ -38,22 +38,30 @@ export class CustomValidators {
   ) {
     return (group: FormGroup) => {
       const cardNumber = group.get(cardNumberFieldName);
-      const cardType = group.get(cardTypeFieldName);
+      const cardTypeControl = group.get(cardTypeFieldName);
+      const number = cardNumber.value;
+      console.log(number);
 
       const mastercardReg = new RegExp("^5[1-5][0-9]{14}$");
       const visacardReg = new RegExp("^4[0-9]{12}(?:[0-9]{3})?$");
-      const jcbcardReg = new RegExp("^(?:2131|1800|35d{3})d{11}$");
+      const jcbcardReg = new RegExp("^(?:2131|1800|35\\d{3})\\d{11}$");
 
-      if (mastercardReg.test(cardNumber.value)) {
-        return cardType.setValue("Master");
-      }
-
-      if (visacardReg.test(cardNumber.value)) {
-        return cardType.setValue("Visa");
-      }
-
-      if (jcbcardReg.test(cardNumber.value)) {
-        return cardType.setValue("JCB");
+      if (cardNumber.value === "" || cardNumber.value === null) {
+        return cardNumber.setErrors({ required: true });
+      } else if (visacardReg.test(cardNumber.value)) {
+        return cardTypeControl.patchValue(
+          {
+            cardType: "Visa"
+          },
+          {
+            emitEvent: false,
+            onlySelf: true
+          }
+        );
+      } else if (jcbcardReg.test(cardNumber.value)) {
+        return cardTypeControl.patchValue("JCB");
+      } else if (mastercardReg.test(cardNumber.value)) {
+        return cardTypeControl.patchValue("Master");
       }
 
       return cardNumber.setErrors({ invalidCreditCard: true });

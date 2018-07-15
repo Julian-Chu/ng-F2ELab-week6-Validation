@@ -16,34 +16,44 @@
       Add your credit card information!
     </div>
   </div>
-  <div class="content">
-    <div class="input-field one-col">
-      <label for="" class="Form">Card Number</label>
-      <input name="" type="text" placeholder="1234 5678 9012 3456">
-    </div>
-    <div class="input-field one-half-col">
-      <label for="" class="Form">Cardholder Name</label>
-      <input name="" type="text" placeholder="EXAMPLE NAME">
-    </div>
-    <div class="input-field one-half-col">
-      <label for="" class="Form">Bank Name</label>
-      <input name="" type="text" placeholder="EXAMPLE BANK">
-    </div>
+
+  <form [formGroup]="form" (submit)="goToNextPage()">
+
+    <div class="content">
+      <div class="input-field one-col" [ngClass]="{warning: cardNumber.touched && cardNumber.errors}">
+        <label for="" class="Form">Card Number</label>
+        <input name="" type="text" placeholder="1234567890123456" formControlName="cardNumber" (blur)="printMsg($event)" maxlength=19>
+        <ng-container *ngIf="cardNumber.touched && cardNumber.errors">
+          <div class="errMsg" *ngIf="cardNumber.dirty && cardNumber.errors['invalidCreditCard']">min 6 words, 1 a-z or A-Z, 1 number</div>
+          <div class="errMsg" *ngIf="cardNumber.pristine && cardNumber.errors['required']">Required</div>
+          <!-- <div class="errMsg" *ngIf="cardNumber.pristine">Required</div> -->
+        </ng-container>
+      </div>
+      <div class="input-field one-half-col">
+        <label for="" class="Form">Cardholder Name</label>
+        <input name="" type="text" placeholder="EXAMPLE NAME">
+      </div>
+      <div class="input-field one-half-col">
+        <label for="" class="Form">Bank Name</label>
+        <input name="" type="text" placeholder="EXAMPLE BANK">
+      </div>
 
 
-    <div class="input-field one-third-col">
-      <label for="" class="Form">CVV</label>
-      <input type="text" name="" min="000" max="999" placeholder="123" minlength="3" maxlength="3">
-    </div>
-    <div class="input-field one-third-col">
-      <label for="" class="Form">Expire Date</label>
-      <input type="number" name="month" min="1" max="12" placeholder="MM">
-    </div>
-    <div class="input-field one-third-col">
-      <label for="" class="Form"></label>
-      <input type="number" name="year" min="2018" max="2060" placeholder="YYYY">
-    </div>
+      <div class="input-field one-third-col">
+        <label for="" class="Form">CVV</label>
+        <input type="text" name="" min="000" max="999" placeholder="123" minlength="3" maxlength="3">
+      </div>
+      <div class="input-field one-third-col">
+        <label for="" class="Form">Expire Date</label>
+        <input type="number" name="month" min="1" max="12" placeholder="MM">
+      </div>
+      <div class="input-field one-third-col">
+        <label for="" class="Form"></label>
+        <input type="number" name="year" min="2018" max="2060" placeholder="YYYY">
+      </div>
 
-    <button>Done</button>
+      <button>Done</button>
 
-  </div>
+    </div>
+  </form>
+</div>
